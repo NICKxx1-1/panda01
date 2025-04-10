@@ -9,7 +9,7 @@
       font-family: '微軟正黑體', Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom, #ffe6ec, #ffd4ec); /*粉色漸層背景 */
+      background: linear-gradient(to bottom, #ffe6ec, #ffd4ec);
       font-size: 20px;
     }
 
@@ -30,6 +30,12 @@
       height: auto;
       margin-top: 15px;
       border-radius: 10px;
+    }
+
+    #weekdayText {
+      margin-top: 10px;
+      font-size: 1.2em;
+      font-weight: bold;
     }
 
     .container {
@@ -127,9 +133,8 @@
 
   <header>
     <h1>西裝熊貓</h1>
-  <a href="https://github.com/NICKxx1-1/panda01/blob/main/GPT01.png" target="_blank">
-  <img src="https://github.com/NICKxx1-1/panda01/raw/main/GPT01.png" alt="西裝熊貓" style="width: 250px; height: auto;">
-</a>
+    <img src="https://github.com/NICKxx1-1/panda01/raw/main/GPT01.png" alt="西裝熊貓">
+    <div id="weekdayText"></div>
   </header>
 
   <div class="container">
@@ -149,10 +154,23 @@
   </div>
 
   <script>
+    const weekdayText = document.getElementById('weekdayText');
+    const weekdays = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+    const today = new Date().getDay();
+
+    if (today === 0) {
+      weekdayText.innerHTML = `<span style="color: #b71c1c; font-weight: bold;">今天是：${weekdays[today]} 🚨</span>`;
+    } else {
+      weekdayText.innerHTML = `<span style="color: #555; font-weight: bold;">今天是：${weekdays[today]}</span>`;
+    }
+
     function calculateFee() {
-      const baseFee = 41;
       const extraFee = parseFloat(document.getElementById('extraFee').value);
       const distance = parseFloat(document.getElementById('distance').value);
+
+      const isSunday = today === 0;
+      const sundayExtraFee = isSunday ? 4 : 0;
+      const baseFee = 41 + sundayExtraFee;
 
       const extraDistance = Math.max(distance - 2.5, 0);
       const extraDistanceFee = extraDistance * 10;
@@ -164,12 +182,14 @@
       resultDiv.innerHTML = `
         <strong>總計：${total.toFixed(0)} 元</strong>
         <div class="fee-breakdown">
-          <div class="fee-item">基本費用：${baseFee} 元</div>
+          <div class="fee-item">基本費用：41 元</div>
+          ${isSunday ? `<div class="fee-item" style="color:#b71c1c;">禮拜日加收運費：${sundayExtraFee} 元</div>` : ''}
           <div class="fee-item">加碼費用：${extraFee} 元</div>
           ${extraDistance > 0 ? `<div class="fee-item">超程費用（${extraDistance.toFixed(1)} 公里）：${extraDistanceFee.toFixed(0)} 元</div>` : ''}
         </div>
       `;
     }
   </script>
+
 </body>
 </html>
