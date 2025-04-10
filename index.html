@@ -9,64 +9,65 @@
       font-family: '微軟正黑體', Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #d0ecf9; /* 天空藍背景 */
+      background-color: #d0ecf9;
+      font-size: 20px; /* 整體字體變大 */
     }
 
     header {
       text-align: center;
       background-color: #a2d5f2;
-      padding: 30px 15px 15px;
+      padding: 40px 20px 20px;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2em;
+      font-size: 2.5em;
       color: #2c3e50;
     }
 
     header img {
-      width: 100px;
+      width: 120px;
       height: auto;
-      margin-top: 10px;
+      margin-top: 15px;
       border-radius: 10px;
     }
 
     .container {
       background-color: white;
-      max-width: 600px;
-      margin: 30px auto;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 700px; /* 寬度放大 */
+      margin: 40px auto;
+      padding: 40px; /* 內距加大 */
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     label {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       font-weight: bold;
       color: #34495e;
     }
 
     input[type="number"] {
       width: 100%;
-      padding: 10px;
-      font-size: 16px;
+      padding: 14px;
+      font-size: 20px;
       border: 2px solid #ccc;
-      border-radius: 5px;
+      border-radius: 6px;
     }
 
     button {
       width: 100%;
-      padding: 12px;
-      font-size: 16px;
+      padding: 16px;
+      font-size: 22px;
       background-color: #3498db;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
     }
 
@@ -75,36 +76,49 @@
     }
 
     .result {
-      margin-top: 20px;
-      padding: 20px;
+      margin-top: 25px;
+      padding: 25px;
       background-color: #e8f6ff;
-      border-radius: 5px;
-      font-size: 1.2em;
+      border-radius: 10px;
+      font-size: 1.4em;
       color: #2c3e50;
       text-align: center;
     }
 
     .fee-breakdown {
-      margin-top: 15px;
+      margin-top: 20px;
       background-color: #f8f9fa;
-      padding: 15px;
-      border-radius: 5px;
-      font-size: 0.9em;
+      padding: 20px;
+      border-radius: 8px;
+      font-size: 1em;
     }
 
     .fee-item {
-      margin: 5px 0;
+      margin: 8px 0;
       color: #666;
     }
 
     @media (max-width: 600px) {
       header h1 {
-        font-size: 1.6em;
+        font-size: 2em;
       }
 
       .container {
         margin: 20px;
-        padding: 20px;
+        padding: 25px;
+      }
+
+      button {
+        font-size: 20px;
+        padding: 14px;
+      }
+
+      input[type="number"] {
+        font-size: 18px;
+      }
+
+      .result {
+        font-size: 1.2em;
       }
     }
   </style>
@@ -113,9 +127,11 @@
 
   <header>
     <h1>西裝熊貓</h1>
-    <a href="https://i.imgur.com/fZC9QfJ.png" target="_blank">
-      <img src="https://i.imgur.com/fZC9QfJ.png" alt="西裝熊貓">
-    </a>
+<a href="https://imgur.com/NfziSnZ" target="_blank">
+  <img src="https://i.imgur.com/NfziSnZ.png" alt="西裝熊貓" style="width: 300px; height: auto;">
+</a>
+
+
   </header>
 
   <div class="container">
@@ -129,7 +145,7 @@
       <input type="number" id="distance" value="2.5" step="0.1" required>
     </div>
 
-    <button onclick="calculateFee()">計算總計</button>
+    <button onclick="calculateFee()">📦 計算總計</button>
 
     <div id="result" class="result" style="display:none;"></div>
   </div>
